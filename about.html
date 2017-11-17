@@ -5,8 +5,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.min.js"></script>
 	<style>
 		/* Remove the navbar's default rounded borders and increase the bottom margin */ 
 		.navbar {
@@ -53,16 +51,59 @@
 				<h2 class="panel-title">Pesquisa</h2>
 			</div>
 			<div class="panel-body">
-				<form>  
-
-					<label for="cidade">Cidade:</label>
-					<input type="text" name="cidade" id="cidade" size="50" /><br><br>
+				<label for="cidade">Cidade:</label>
+				<input type="text" name="cidade" id="cidade" size="50" />
 					
-					<button type="button" onclick="carregarCidades()">Pesquisar</button>
- 
-				</form>  
+				<button type="button" onclick="carregarCidades()">Pesquisar</button><br><br>
+				
+				<div id="telefone"></div>
+				<div id="endereco"></div>
 			</div>
 		</div>
 	</div>
+	<script type = "application/javascript">
+        function carregarCidades() {
+            var data_file = "https://raw.githubusercontent.com/rafaeldourado50/sisweb/master/cidades.json";
+            var http_request = new XMLHttpRequest();
+            try {
+				http_request = new XMLHttpRequest();
+            } catch (e) {
+				try {
+					http_request = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch (e) {
+					try {
+						http_request = new ActiveXObject("Microsoft.XMLHTTP");
+					} catch (e) {
+						alert("Your browser broke!");
+						return false;
+					}
+				}
+            }
+            http_request.onreadystatechange = function() {
+				if (http_request.readyState == 4) {
+					var jsonObj = JSON.parse(http_request.responseText);
+
+					var filtro = document.getElementById("cidade").value;
+					var achou = false;
+				  
+					for (var i = 0; i < jsonObj.length; i++) {
+						if (filtro == jsonObj[i].cidade) {
+							achou = true;
+							document.getElementById("telefone").innerHTML = jsonObj[i].telefone;
+							document.getElementById("endereco").innerHTML = jsonObj[i].endereco;
+						}
+					}
+					if (achou == false) {
+						document.getElementById("telefone").innerHTML = "";
+						document.getElementById("endereco").innerHTML = "";
+					}
+				}
+            }
+			
+            http_request.open("GET", data_file, true);
+            http_request.send();
+		}
+		
+	</script>
 </body>
 </html>

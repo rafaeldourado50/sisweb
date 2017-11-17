@@ -1,0 +1,17 @@
+[
+   {
+     "cidade": "Salvador",
+     "telefone": "71 3333-3333",
+     "endereco": "Rua da Paciência, s/n"
+    },
+   {
+     "cidade": "São Paulo",
+     "telefone": "11 4444-4444",
+     "endereco": "Rua 25 de Março, s/n"
+    },
+	{
+     "cidade": "Rio de Janeiro",
+     "telefone": "21 5555-5555",
+     "endereco": "Rua da Ladeira, s/n, Copacabana"
+    }
+]

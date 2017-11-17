@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>MATC82 - Desafio HTML + CSS + JavaScript</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<style>
+		/* Remove the navbar's default rounded borders and increase the bottom margin */ 
+		.navbar {
+		  margin-bottom: 50px;
+		  border-radius: 0;
+		}
+		
+		/* Remove the jumbotron's default bottom margin */ 
+		.jumbotron {
+		  margin-bottom: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container-fluid text-center">
+			<div class="row content">
+				<div class="col-sm-3"> 
+					<img src="img/logo.jpg" class="img-responsive" alt="Image" >
+				</div>
+				<div class="col-sm-9 text-left"> 
+					<h1>HOW TO MAKE RESPONSIVE LAYOUTS WITH HTML5/CSS3</h1>
+				</div>
+			</div>     
+		</div>
+	</div>
+
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+		<div class="collapse navbar-collapse" id="myNavbar">
+		  <ul class="nav navbar-nav">
+			<li><a href="home.html">Home</a></li>
+			<li><a href="about.html">About</a></li>
+			<li><a href="#">Team</a></li>
+			<li class="active"><a href="contact.html">Contact</a></li>
+		  </ul>
+		</div>
+	  </div>
+	</nav>
+
+	<div class="container-fluid text-left">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title"><label id="nome"></label>, obrigado pelo contato. 
+				Sua mensagem foi enviada em: <label id="data"></label>. 
+				Retornaremos em breve. Enquanto isso, que tal dar uma olhada nas sugestões abaixo?</h2>
+			</div>
+			<div class="panel-body">
+				<div class="row content">
+					<div class="col-sm-2" id="lerLivros">
+						<a href="http://lelivros.com">
+							<img border="0" alt="Ler Livros" src="img/ler-livros.jpg" width="200" height="150">
+						</a>
+					</div>
+					<div class="col-sm-2" id="ouvirMusica">
+						<a href="https://www.ouvirmusica.com.br">
+							<img border="0" alt="Ouvir Música" src="img/ouvir-musica.jpg" width="200" height="150">
+						</a>
+					</div>
+					<div class="col-sm-2" id="assistirFilmes">
+						<a href="http://filmesonline.online/filmes-2017/">
+							<img border="0" alt="Assistir filmes" src="img/assistir-filmes.jpg" width="200" height="150">
+						</a>
+					</div>
+					<div class="col-sm-2" id="praticarEsportes">
+						<a href="http://globoesporte.globo.com">
+							<img border="0" alt="Praticar esportes" src="img/praticar-esportes.jpg" width="200" height="150">
+						</a>
+					</div>
+					<div class="col-sm-2" id="jogarGames">
+						<a href="http://www.clickjogos.com.br">
+							<img border="0" alt="Jogar games" src="img/jogar-games.jpg" width="200" height="150">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function getQueryVariable(variable) {
+			   var query = window.location.search.substring(1);
+			   var vars = query.split("&");
+			   for (var i=0;i<vars.length;i++) {
+				   var pair = vars[i].split("=");
+				   if(pair[0] == variable){return pair[1].replace(/\+/g, " ");}
+			   }
+			   return(false);
+		}
+		document.getElementById("nome").innerHTML = getQueryVariable("nome");
+		document.getElementById("data").innerHTML = new Date();
+		
+		var lerLivros = getQueryVariable("hobby1");
+		if (lerLivros == false) {
+			document.getElementById("lerLivros").innerHTML = "";
+		}
+		var ouvirMusica = getQueryVariable("hobby2");
+		if (ouvirMusica == false) {
+			document.getElementById("ouvirMusica").innerHTML = "";
+		}
+		var assistirFilmes = getQueryVariable("hobby3");
+		if (assistirFilmes == false) {
+			document.getElementById("assistirFilmes").innerHTML = "";
+		}
+		var praticarEsportes = getQueryVariable("hobby4");
+		if (praticarEsportes == false) {
+			document.getElementById("praticarEsportes").innerHTML = "";
+		}
+		var jogarGames = getQueryVariable("hobby5");
+		if (jogarGames == false) {
+			document.getElementById("jogarGames").innerHTML = "";
+		}
+	</script>
+</body>
+</html>
